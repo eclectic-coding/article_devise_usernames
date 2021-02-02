@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ArticleDeviseUsernames</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>ArticleDeviseUsernames</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<div style="margin-top: 20px">
+  <% if user_signed_in? %>
+    <%= link_to "User Profile", user_path(current_user.slug) %>
+    <%= link_to "Logout", destroy_user_session_path(current_user.slug), method: :delete %>
+  <% else %>
+    <%= link_to "Log in", new_user_session_path %>
+  <% end %>
+  <%= yield %>
+
+</div>
+</body>
 </html>

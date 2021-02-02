@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_person_name
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
 end

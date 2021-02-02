@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
+  after_action
 
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:slug])
   end
 
 end
